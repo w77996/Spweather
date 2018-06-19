@@ -1,17 +1,14 @@
 package com.w77996.spweather.vo;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-public class Forecast implements Serializable {
-
+public class Yeaterday implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String date;
 	private String high;
-	private String fengli;
+	private String fx;
 	private String low;
-	private String fengxiang;
+	private String fl;
 	private String type;
 	public String getDate() {
 		return date;
@@ -25,11 +22,11 @@ public class Forecast implements Serializable {
 	public void setHigh(String high) {
 		this.high = high;
 	}
-	public String getFengli() {
-		return fengli;
+	public String getFx() {
+		return fx;
 	}
-	public void setFengli(String fengli) {
-		this.fengli = fengli;
+	public void setFx(String fx) {
+		this.fx = fx;
 	}
 	public String getLow() {
 		return low;
@@ -37,11 +34,11 @@ public class Forecast implements Serializable {
 	public void setLow(String low) {
 		this.low = low;
 	}
-	public String getFengxiang() {
-		return fengxiang;
+	public String getFl() {
+		return fl;
 	}
-	public void setFengxiang(String fengxiang) {
-		this.fengxiang = fengxiang;
+	public void setFl(String fl) {
+		this.fl = fl;
 	}
 	public String getType() {
 		return type;
@@ -49,6 +46,5 @@ public class Forecast implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-
 }
 
