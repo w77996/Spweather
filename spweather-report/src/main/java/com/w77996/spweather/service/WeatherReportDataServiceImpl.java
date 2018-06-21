@@ -21,10 +21,10 @@ public class WeatherReportDataServiceImpl implements WeatherReportDataService {
 	@Autowired
 	private WeatherDataService  weatherDataService;
 
-	@Override
+
 	public Weather getDataByCityId(String cityId) {
-		WeatherResponse resp = weatherDataService.getDataByCityId(cityId);
-		return resp.getData();
+			WeatherResponse resp = weatherDataService.getDataByCityId(cityId);
+			return resp.getData();
 	}
 }
 

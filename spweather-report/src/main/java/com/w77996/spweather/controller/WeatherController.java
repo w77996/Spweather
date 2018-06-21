@@ -27,4 +27,9 @@ public class WeatherController {
         log.info("6666666666");
         return weatherDataService.getDataByCityName(cityName);
     }
+
+    @RequestMapping("/")
+    public String index(){
+        return "weather/index";
+    }
 }

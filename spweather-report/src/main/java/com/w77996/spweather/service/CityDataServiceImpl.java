@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class CityDataServiceImpl implements CityDataService {
-    @Override
+
     public List<City> listCity() throws  Exception{
         // 读取XML文件
         Resource resource = new ClassPathResource("citylist.xml");
