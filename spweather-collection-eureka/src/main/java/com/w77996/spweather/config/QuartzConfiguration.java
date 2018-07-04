@@ -8,15 +8,24 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class QuartzConfiguration {
 
+    private static final int TIME = 1800; // 更新频率
+
+    // JobDetail
     @Bean
-    public JobDetail weatherJobDetail(){
-        return JobBuilder.newJob(WeatherJob.class).withIdentity("weather").storeDurably().build();
+    public JobDetail weatherDataSyncJobDetail() {
+        return JobBuilder.newJob(WeatherJob.class).withIdentity("weatherDataSyncJob")
+                .storeDurably().build();
     }
 
+    // Trigger
     @Bean
-    public Trigger weatherTrigger(){
-        return TriggerBuilder.newTrigger().forJob(weatherJobDetail())
-                .withIdentity("weatherTrigger")
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(2).repeatForever()).build();
+    public Trigger weatherDataSyncTrigger() {
+
+        SimpleScheduleBuilder schedBuilder = SimpleScheduleBuilder.simpleSchedule()
+                .withIntervalInSeconds(TIME).repeatForever();
+
+        return TriggerBuilder.newTrigger().forJob(weatherDataSyncJobDetail())
+                .withIdentity("weatherDataSyncTrigger").withSchedule(schedBuilder).build();
     }
 }
+

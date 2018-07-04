@@ -1,10 +1,10 @@
 package com.w77996.spweather.job;
 
-
 import com.w77996.spweather.service.WeatherDataCollectionService;
 import com.w77996.spweather.vo.City;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
@@ -13,8 +13,7 @@ import java.util.List;
 
 @Slf4j
 public class WeatherJob extends QuartzJobBean {
-   /* @Autowired
-    private CityDataService cityDataService;*/
+
 
     @Autowired
     private WeatherDataCollectionService weatherDataCollectionService;
@@ -22,14 +21,20 @@ public class WeatherJob extends QuartzJobBean {
      * @see org.springframework.scheduling.quartz.QuartzJobBean#executeInternal(org.quartz.JobExecutionContext)
      */
     @Override
-    protected void executeInternal(JobExecutionContext context)  {
+    protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
         log.info("Weather Data Sync Job. Start！");
         // 获取城市ID列表
+        // TODO 改为由城市数据API微服务来提供数据
         List<City> cityList = null;
 
         try {
+
+            // TODO 改为由城市数据API微服务提供数据
             cityList = new ArrayList<>();
-            cityList.add(new City());
+            City city = new City();
+            city.setCityId("101280601");
+            cityList.add(city);
+
         } catch (Exception e) {
             log.error("Exception!", e);
         }
@@ -44,4 +49,6 @@ public class WeatherJob extends QuartzJobBean {
 
         log.info("Weather Data Sync Job. End！");
     }
+
 }
+
